@@ -1,7 +1,5 @@
 .carousel-image {
     width: 100%; /* Adjust the width as needed */
-    height: 2000px; /* Adjust the height as needed */
+    height: 400px; /* Adjust the height as needed */
     object-fit: cover; /* Maintain aspect ratio and fill the container */
   }
-
-  

@@ -6,3 +6,43 @@ body{
     background-color: #f4f4f4;
 
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Custom styles for carousel indicators */
+.carousel-indicators {
+    margin-top: 0px; /* Add some space above the indicators */
+  }
+  
+  /* Custom styles for individual carousel indicator */
+  .carousel-indicators li {
+    width: 10px; /* Set the width of each indicator */
+    height: 10px; /* Set the height of each indicator */
+    background-color: rgba(226, 18, 18, 0.5); /* Set the background color */
+    border-radius: 50%; /* Make the indicators circular */
+    margin: 0 5px; /* Add some space between indicators */
+  }
+  
+  /* Active state for carousel indicator */
+  .carousel-indicators .active {
+    background-color: #0e0d0d; /* Change the background color of the active indicator */
+  }
+
+  /* Custom styles for carousel navigation arrows */
+.carousel-control-prev, .carousel-control-next {
+    width: 40px; /* Set the width of the arrows */
+    height: 40px; /* Set the height of the arrows */
+    background-color: transparent; /* Set the background color */
+    border-radius: 50%; /* Make the arrows circular */
+    font-size: 24px; /* Set the font size */
+    color: #fff; /* Set the color of the arrows */
+    top: 200px;
+  }
+  
+  /* Hover effect for carousel navigation arrows */
+  .carousel-control-prev:hover, .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darken the background color on hover */
+  }
+  
+  
