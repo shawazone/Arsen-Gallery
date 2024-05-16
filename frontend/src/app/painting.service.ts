@@ -14,4 +14,10 @@ export class PaintingService {
   getPaintings(): Observable<any> {
     return this.http.get<any>('http://localhost:4000/api/painting'); // Adjust the URL to match your server endpoint
   }
+
+
+  getPantingById(id: string): Observable<any> {
+    const url = `http://localhost:4000/api/painting/${id}`;
+    return this.http.get<any>(url);
+  }
 }
