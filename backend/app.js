@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const cors = require('cors');
 // app.js
 const express = require('express');
 const mongoose = require('mongoose');
@@ -25,8 +25,9 @@ mongoose.connect(process.env.MONGODB_URI, {
   });
   
 
+app.use(cors());
 
-  app.use(express.json());
+app.use(express.json());
 // Define routes
 app.use('/api', paintingRoutes);
 

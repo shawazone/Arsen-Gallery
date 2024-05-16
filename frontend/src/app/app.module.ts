@@ -13,6 +13,8 @@ import { AboutMeComponent } from './about-me/about-me.component';//component
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import { PaintingService } from './painting.service';//service
+import { HttpClientModule } from '@angular/common/http';
 
 
  //carousel library
@@ -30,6 +32,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserModule,
     AppRoutingModule,
     LandingModule, //module
+    HttpClientModule
 
 
   
@@ -37,7 +40,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    // PaintingService //services
   ],
   bootstrap: [AppComponent]
 })

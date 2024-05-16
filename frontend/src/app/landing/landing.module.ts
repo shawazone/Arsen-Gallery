@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { LandingRoutingModule } from './landing-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+// import { SharedModule } from '../shared/shared.module';
+
+import { PaintingService } from '../painting.service';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
@@ -16,6 +19,11 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     CommonModule,
     LandingRoutingModule,
     CarouselModule.forRoot(),
-  ]
+
+  ],
+  // providers: [PaintingService]
 })
 export class LandingModule { }
+
+
+
