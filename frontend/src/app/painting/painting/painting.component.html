@@ -1,0 +1,17 @@
+<div class="painting-container">
+  <div *ngFor="let painting of painting$ | async">
+    <div class="painting-item">
+      <p>uwu</p>
+      <button *ngIf="showButtons" class="update-button"> Update</button>
+      <button *ngIf="showButtons" class="delete-button" (click)="deletePainting(painting._id)">Delete</button>
+      <!-- <h2>{{painting._id}}</h2> -->
+      <h2>{{ painting.name }}</h2>
+      <p>{{ painting.description }}</p>
+      <img [src]="painting.image" alt="{{ painting.name }}" width="200">
+      <!-- Conditionally render buttons -->
+    
+      <!-- Conditionally render price -->
+      <p *ngIf="showPrice">Price: {{ painting.price }}</p>
+    </div>
+  </div>
+</div>

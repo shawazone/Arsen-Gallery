@@ -9,33 +9,31 @@ import { LandingModule } from './landing/landing.module'; //module
 
 
 import { NavbarComponent } from './navbar/navbar.component';//component
-import { AboutMeComponent } from './about-me/about-me.component';//component
+import { AboutMeComponent } from './components/about-me/about-me.component';//component
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { PaintingService } from './painting.service';//service
+import { PaintingService } from '../app/shared/services/painting.service'; //services
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from './shared/shared.module';
+import { PaintingModule } from './painting/painting.module';
 
  //carousel library
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    
-    AboutMeComponent,
-    
+    NavbarComponent, 
+    AboutMeComponent,  
  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LandingModule, //module
-    HttpClientModule
-
-
-  
+    HttpClientModule,
   ],
 
   providers: [

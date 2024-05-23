@@ -6,24 +6,40 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 
 // import { SharedModule } from '../shared/shared.module';
 
-import { PaintingService } from '../painting.service';
+import { PaintingService } from '../shared/services/painting.service';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+
+import { SharedModule } from '../shared/shared.module';
+import { PaintingModule } from '../painting/painting.module';
+import { AdminsModule } from '../admins/admins.module';
+
+
 
 
 @NgModule({
   declarations: [
-    LandingPageComponent
+    LandingPageComponent,
+   
   ],
   imports: [
     CommonModule,
     LandingRoutingModule,
+    PaintingModule,
     CarouselModule.forRoot(),
+    SharedModule,
+
 
   ],
-  // providers: [PaintingService]
+
 })
-export class LandingModule { }
+export class LandingModule { 
+  constructor() {
+    console.log('Landing Module Loaded');
+  }
+
+
+}
 
 
 

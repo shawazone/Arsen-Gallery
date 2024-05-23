@@ -7,17 +7,10 @@
     </slide>
 
   </carousel> 
-<div class="painting-container">
-  <div  *ngFor="let painting of painting$ | async">
-    <div class="painting-item">
-      <p>uwu</p>
-      <h2>{{ painting.name }}</h2>
-      <p>{{ painting.description }}</p>
-      <img [src]="painting.image" alt="{{ painting.name }}" width="200">
-    </div>
-  </div>
-</div>
-
-  
+  <app-painting [showPrice]="true" [showButtons]="true" ></app-painting>
+<!-- <app-popup>
+  <p>Is content projection cool?</p>
+</app-popup>
+   -->
   
   

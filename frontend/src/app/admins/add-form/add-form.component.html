@@ -1,0 +1,9 @@
+<!-- add-painting.component.html -->
+<form [formGroup]="paintingForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" placeholder="Name">
+  <input type="text" formControlName="description" placeholder="Description">
+  <textarea formControlName="poem" placeholder="Poem"></textarea>
+  <input type="number" formControlName="price" placeholder="Price">
+  <input type="text" formControlName="image" placeholder="Image URL">
+  <button type="submit" [disabled]="!paintingForm.valid">Add Painting</button>
+</form>

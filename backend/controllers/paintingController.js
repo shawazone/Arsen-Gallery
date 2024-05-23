@@ -15,7 +15,7 @@ const paintingController = {
 
   createPainting: async (req, res) => {
     const { name, description, poem, price, image } = req.body;
-    // const newPainting = new Painting({ name, description, poem, price, image });
+    
     try {
       const painting = await Painting.create({ name, description, poem, price, image });
       res.status(201).json(painting);
@@ -39,14 +39,12 @@ const paintingController = {
   updatePainting: async (req, res) => {
     const { name, description, poem, price, image } = req.body;
     try {
-      const updatedPainting = await Painting.findByIdAndUpdate(req.params.id, {
-        name, description, poem, price, image
-      }, { new: true });
+      const updatedPainting = await Painting.findByIdAndUpdate(req.params.id, { name, description, poem, price, image }, { new: true });
       res.json(updatedPainting);
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
-  },
+  }, 
 
   deletePainting: async (req, res) => {
     try {
