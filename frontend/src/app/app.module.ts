@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from './shared/shared.module';
 import { PaintingModule } from './painting/painting.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
  //carousel library
 
@@ -33,7 +34,7 @@ import { PaintingModule } from './painting/painting.module';
     BrowserModule,
     AppRoutingModule,
     LandingModule, //module
-    HttpClientModule,
+    HttpClientModule, FontAwesomeModule,
   ],
 
   providers: [

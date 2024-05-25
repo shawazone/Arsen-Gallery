@@ -7,7 +7,8 @@ import { AddFormComponent } from './add-form/add-form.component';
 
 const routes: Routes = [
   { path: '', component: AdminsComponent },
-  { path: 'add', component: AddFormComponent }
+  { path: 'add', component: AddFormComponent },
+  { path: 'edit/:id', component: AddFormComponent },
 ];
 
 @NgModule({

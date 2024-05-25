@@ -1,9 +1,14 @@
-<!-- add-painting.component.html -->
+<!-- src/app/add-form/add-form.component.html -->
+<h2>{{ formTitle }}</h2>
 <form [formGroup]="paintingForm" (ngSubmit)="onSubmit()">
   <input type="text" formControlName="name" placeholder="Name">
   <input type="text" formControlName="description" placeholder="Description">
   <textarea formControlName="poem" placeholder="Poem"></textarea>
   <input type="number" formControlName="price" placeholder="Price">
-  <input type="text" formControlName="image" placeholder="Image URL">
-  <button type="submit" [disabled]="!paintingForm.valid">Add Painting</button>
+  
+  <app-image-upload (imageUploaded)="onImageUploaded($event)"></app-image-upload>
+  <input type="text" formControlName="image" placeholder="Image URL" readonly>
+
+  <button type="submit" [disabled]="!paintingForm.valid">{{ submitButtonText }}</button>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 </form>

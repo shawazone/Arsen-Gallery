@@ -1,0 +1,4 @@
+<!-- src/app/image-upload/image-upload.component.html -->
+<input type="file" (change)="handleFileInput($event)">
+<img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image" width="200">
+    

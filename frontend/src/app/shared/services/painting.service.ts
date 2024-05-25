@@ -30,11 +30,17 @@ export class PaintingService {
     }
 
 
-  getPantingById(id: string): Observable<any> {
-    const url = `http://localhost:4000/api/painting/${id}`;
-    return this.http.get<any>(url);
-  }
+  // getPantingById(id: string): Observable<any> {
+  //   const url = `http://localhost:4000/api/painting/${id}`;
+  //   return this.http.get<any>(url);
+  // }
 
+  getPaintingById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+  updatePainting(id: string, painting: any): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/${id}`, painting);
+  }
 
 
   deletePainting(paintingId: string): Observable<any> {

@@ -1,7 +1,18 @@
 import { Component ,OnInit,Input} from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 import { PaintingService } from '../../shared/services/painting.service';
+import { CartService } from '../../shared/services/cart.service';
+    
+
+interface Painting {
+  name: string;
+  description: string;
+  poem: string;
+  price: number;
+  image: any; // Replace with appropriate image type
+}
+
 
 @Component({
   selector: 'app-painting',
@@ -18,7 +29,7 @@ export class PaintingComponent  implements OnInit{
 
   painting$: Observable<any[]>|undefined;
 
-  constructor(private paintingService: PaintingService) { }
+  constructor(private paintingService: PaintingService, private router: Router,private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getPaintings();
@@ -33,6 +44,10 @@ export class PaintingComponent  implements OnInit{
     })
   }
 
+  addToCart(painting: Painting): void {
+    this.cartService.addToCart(painting.name);
+  }
+
 
 
   async deletePainting(paintingId: string): Promise<void> {
@@ -44,6 +59,13 @@ export class PaintingComponent  implements OnInit{
       console.error('Error deleting painting:', error);
     }
   }
+
+  navigateToEdit(id: string): void {
+    this.router.navigate(['/admin/edit', id]);
+    console.log('Navigating to edit page:', id)
+  }
+
+
 
 
 }
