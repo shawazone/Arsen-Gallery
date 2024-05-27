@@ -4,14 +4,18 @@ import { PaintingComponent } from './painting/painting.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     PaintingComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+
   ],
   exports: [PaintingComponent], 
+
 
 })
 export class PaintingModule { }

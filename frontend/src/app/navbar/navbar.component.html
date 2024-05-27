@@ -11,11 +11,11 @@
     <ul class="nav-links">
       <li><a routerLink="/" routerLinkActive="active">Home</a></li>
       <li><a routerLink="/about-me" routerLinkActive="active">About Me</a></li>
-      <li><a routerLink="/gallery" routerLinkActive="active">Gallery</a></li>
+      <li><a routerLink="/shop" routerLinkActive="active">Shop</a></li>
       <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
       <li class="cart">
         <fa-icon [icon]="faShoppingCart" (click)="toggleCartDropdown()"></fa-icon>
-        <span class="cart-count">{{  cartItems.length}}</span>
+        <span class="cart-count">{{cartItems.length}}</span>
         <div class="cart-dropdown" *ngIf="cartDropdownVisible">
           <p>Shopping Cart ({{ cartItems.length }} items)</p>
           <ul>

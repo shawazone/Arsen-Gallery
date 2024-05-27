@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { PaintingModule } from './painting/painting.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PaintingComponent } from './painting/painting/painting.component';
+import { ShopModule } from './shop/shop.module';
+
 
  //carousel library
 
@@ -28,13 +31,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppComponent,
     NavbarComponent, 
     AboutMeComponent,  
+    // PaintingComponent,
+    // ShopComponent,
  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LandingModule, //module
-    HttpClientModule, FontAwesomeModule,
+    HttpClientModule, 
+    FontAwesomeModule,
+    ShopModule,
+    
   ],
 
   providers: [
@@ -42,6 +50,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     provideAnimationsAsync(),
     // PaintingService //services
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
