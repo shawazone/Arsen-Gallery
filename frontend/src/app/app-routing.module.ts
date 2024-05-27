@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { ShopComponent } from './shop/shop/shop.component';
+import { PaintingComponent } from './painting/painting/painting.component';
+import { PaintingDetailComponent } from './painting/painting-detail/painting-detail.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import('./admins/admins.module').then(m => m.AdminsModule) },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
+  { path: 'paintings', component: AboutMeComponent },
+  
 
 
 ];

@@ -31,8 +31,7 @@ import { ShopModule } from './shop/shop.module';
     AppComponent,
     NavbarComponent, 
     AboutMeComponent,  
-    // PaintingComponent,
-    // ShopComponent,
+   
  
   ],
   imports: [
@@ -42,13 +41,13 @@ import { ShopModule } from './shop/shop.module';
     HttpClientModule, 
     FontAwesomeModule,
     ShopModule,
-    
+    PaintingModule,
   ],
 
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    // PaintingService //services
+
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

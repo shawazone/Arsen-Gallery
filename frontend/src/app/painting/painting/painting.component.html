@@ -1,15 +1,16 @@
-<!-- src/app/painting/painting.component.html -->
-
 <div class="painting-container">
   <div *ngFor="let painting of painting$ | async">
     <div class="painting-item">
       <button *ngIf="showButtons" class="update-button" (click)="navigateToEdit(painting._id)">Edit</button>
       <button *ngIf="showButtons" class="delete-button" (click)="deletePainting(painting._id)">Delete</button>
       <h2>{{ painting.name }}</h2>
+      
       <p>{{ painting.description }}</p>
       <img [src]="painting.image" alt="{{ painting.name }}" width="200">
       <p *ngIf="showPrice">Price: {{ painting.price }}</p>
       <button (click)="addToCart(painting)">Add to Cart</button>
+      <a [routerLink]="['/paintings',painting._id]">View</a>
+
     </div>
   </div>
 </div>

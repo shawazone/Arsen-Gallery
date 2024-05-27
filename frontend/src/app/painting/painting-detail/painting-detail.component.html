@@ -1,0 +1,9 @@
+<div *ngIf="painting">
+    <h1>{{ painting.name }}</h1>
+    <p>{{ painting.description }}</p>
+    <img [src]="painting.image" alt="{{ painting.name }}" width="400">
+    <p>Price: {{ painting.price }}</p>
+    <!-- <p>{{painting.poem}}</p> -->
+    <button (click)="addToCart(painting)">Add to Cart</button>
+  </div>
+  
