@@ -22,6 +22,7 @@ interface Painting {
 export class PaintingComponent  implements OnInit{
   @Input() showButtons: boolean = false;
   @Input() showPrice: boolean = false;
+  @Input()  showAddToCart: boolean = false;
   @Input() paintings: any[] = [];
 
 

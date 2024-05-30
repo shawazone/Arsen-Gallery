@@ -22,6 +22,7 @@ import { PaintingModule } from './painting/painting.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaintingComponent } from './painting/painting/painting.component';
 import { ShopModule } from './shop/shop.module';
+import { FooterComponent } from './footer/footer.component';
 
 
  //carousel library
@@ -30,7 +31,7 @@ import { ShopModule } from './shop/shop.module';
   declarations: [
     AppComponent,
     NavbarComponent, 
-    AboutMeComponent,  
+    AboutMeComponent, FooterComponent,  
    
  
   ],
