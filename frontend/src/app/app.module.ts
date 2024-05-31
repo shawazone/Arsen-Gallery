@@ -23,6 +23,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaintingComponent } from './painting/painting/painting.component';
 import { ShopModule } from './shop/shop.module';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+
+
 
 
  //carousel library
@@ -31,7 +35,10 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AppComponent,
     NavbarComponent, 
-    AboutMeComponent, FooterComponent,  
+    AboutMeComponent, 
+    FooterComponent, 
+    LoginComponent,
+    SignupComponent,  
    
  
   ],
@@ -43,6 +50,8 @@ import { FooterComponent } from './footer/footer.component';
     FontAwesomeModule,
     ShopModule,
     PaintingModule,
+
+    ReactiveFormsModule,
   ],
 
   providers: [

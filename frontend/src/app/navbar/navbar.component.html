@@ -1,9 +1,5 @@
-<!-- src/app/app.component.html -->
 <nav class="navbar">
   <div class="container">
-
-<!-- <button (click)="addToCart()">Add to Cart</button> -->
-
     <a class="logo" routerLink="/">
       <img [src]="logoSrc" class="arsen-portraite" alt="Art Gallery Logo">
       Arsen's Art Gallery
@@ -12,7 +8,7 @@
       <li><a routerLink="/" routerLinkActive="active">Home</a></li>
       <li><a routerLink="/about-me" routerLinkActive="active">About Me</a></li>
       <li><a routerLink="/shop" routerLinkActive="active">Shop</a></li>
-      <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+      <li  *ngIf="user?.role==='admin'"><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
       <li class="cart">
         <fa-icon [icon]="faShoppingCart" (click)="toggleCartDropdown()"></fa-icon>
         <span class="cart-count">{{cartItems.length}}</span>
@@ -22,10 +18,16 @@
             <li *ngFor="let item of cartItems">
               {{ item }}
             </li>
-          </ul> 
+          </ul>
           <button (click)="checkout()">Checkout</button>
         </div>
       </li>
+    </ul>
+    <ul class="user-links">
+      <li *ngIf="user?.email">Welcome, {{ user?.email }}</li>
+      <li *ngIf="!user?.email"><a routerLink="/login">Login</a></li>
+      <li *ngIf="!user?.email"><a routerLink="/signup">Signup</a></li>
+      <li *ngIf="user?.email"><a (click)="logout()">Logout</a></li>
     </ul>
   </div>
 </nav>
