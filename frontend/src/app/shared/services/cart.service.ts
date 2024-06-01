@@ -14,10 +14,13 @@ export class CartService {
 
 
   addToCart(paintingName: string): void {
-    // this.cartCount.next(this.cartCount.value + 1);
     const currentCart = this.cartItems.value;
-    const updatedCart = [...currentCart, paintingName];
-    this.cartItems.next(updatedCart);
+    
+    // Check if the painting is already in the cart
+    if (!currentCart.includes(paintingName)) {
+        const updatedCart = [...currentCart, paintingName];
+        this.cartItems.next(updatedCart);
+    }
   }
   clearCart(): void {
     this.cartItems.next([]);

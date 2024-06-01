@@ -24,13 +24,16 @@ export class NavbarComponent implements OnInit {
     });
     this.authService.user$.subscribe(user => {
       this.user = user;
+});
+
+
+
     
-      
-    });
   }
 
   toggleCartDropdown(): void {
     this.cartDropdownVisible = !this.cartDropdownVisible;
+    console.log("cart cart cart")
   }
 
   checkout(): void {
