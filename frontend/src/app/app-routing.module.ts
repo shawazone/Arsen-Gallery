@@ -7,6 +7,7 @@ import { PaintingComponent } from './painting/painting/painting.component';
 import { PaintingDetailComponent } from './painting/painting-detail/painting-detail.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component:LoginComponent },
   { path: 'signup', component:SignupComponent },
   { path: 'paintings', component: PaintingComponent },
-  { path: 'admin', loadChildren: () => import('./admins/admins.module').then(m => m.AdminsModule) },
+  { path: 'admin', loadChildren: () => import('./admins/admins.module').then(m => m.AdminsModule),canActivate: [AdminGuard] },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
 

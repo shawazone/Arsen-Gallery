@@ -1,9 +1,8 @@
-// Painting.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
- 
+import { AuthService } from './auth.service'; // Import AuthService
+
 interface Painting {
   name: string;
   description: string;
@@ -12,46 +11,42 @@ interface Painting {
   image: any; // Replace with appropriate image type
 }
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class PaintingService {
-
-  constructor(private http: HttpClient) { }
-
   private apiUrl = 'http://localhost:4000/api/painting';
 
-  getPaintings(): Observable<any> {
-    return this.http.get<any>('http://localhost:4000/api/painting');
-     // Adjust the URL to match your server endpoint
-    
+  constructor(private http: HttpClient, private authService: AuthService) { }
+
+  private getHeaders(): HttpHeaders {
+    const token = this.authService.getToken();
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
     }
+    return headers;
+  }
 
-
-  // getPantingById(id: string): Observable<any> {
-  //   const url = `http://localhost:4000/api/painting/${id}`;
-  //   return this.http.get<any>(url);
-  // }
+  getPaintings(): Observable<any> {
+    return this.http.get<any>(this.apiUrl, { headers: this.getHeaders() });
+  }
 
   getPaintingById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
-  }
-  updatePainting(id: string, painting: any): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, painting);
+    return this.http.get<any>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
 
+  updatePainting(id: string, painting: any): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/${id}`, painting, { headers: this.getHeaders() });
+  }
 
   deletePainting(paintingId: string): Observable<any> {
     const deleteUrl = `${this.apiUrl}/${paintingId}`;
-    return this.http.delete(deleteUrl);
+    return this.http.delete(deleteUrl, { headers: this.getHeaders() });
   }
 
   createPainting(painting: Painting): Observable<Painting> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post<Painting>(this.apiUrl, painting, { headers })
+    return this.http.post<Painting>(this.apiUrl, painting, { headers: this.getHeaders() })
       .pipe(
         catchError(this.handleError)
       );
@@ -60,11 +55,8 @@ export class PaintingService {
   private handleError(error: any): Observable<never> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // Client-side or network error occurred. Handle it accordingly.
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // Backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);

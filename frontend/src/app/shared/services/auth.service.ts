@@ -8,14 +8,12 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthService {
   private baseUrl = 'http://localhost:4000/api/user'; // Replace with your API URL
-  private userSubject = new BehaviorSubject<{ email: string, role: string } | null>(null); // Use BehaviorSubject
+  private userSubject = new BehaviorSubject<{ email: string, role: string } | null>(this.getStoredUser()); // Use BehaviorSubject
   public user$ = this.userSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-    
-   }
+  constructor(private http: HttpClient) { }
 
-  signup(email: string, password: string, role: string): Observable<any> {
+  signup(email: string, password: string, role: "user"): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/signup`, { email, password, role })
       .pipe(
         tap(response => {
@@ -39,18 +37,44 @@ export class AuthService {
   }
 
   private storeTokenAndUser(token: string, email: string, role: string) {
-    // Use secure storage library or browser-provided mechanism
-    localStorage.setItem('token', token); // For demonstration purposes (replace with secure storage)
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('token', token);
+      localStorage.setItem('email', email);
+      localStorage.setItem('role', role);
+    }
     this.userSubject.next({ email, role });
   }
 
   private removeTokenAndUser() {
-    localStorage.removeItem('token');
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('token');
+      localStorage.removeItem('email');
+      localStorage.removeItem('role');
+    }
     this.userSubject.next(null);
   }
 
   getUser() {
     return this.userSubject.value;
+  }
+
+  private getStoredUser(): { email: string, role: string } | null {
+    if (typeof localStorage !== 'undefined') {
+      const token = localStorage.getItem('token');
+      const email = localStorage.getItem('email');
+      const role = localStorage.getItem('role');
+      if (token && email && role) {
+        return { email, role };
+      }
+    }
+    return null;
+  }
+
+  getToken(): string | null {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('token');
+    }
+    return null;
   }
 
   // Optional: Token refresh logic
