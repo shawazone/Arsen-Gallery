@@ -1,16 +1,18 @@
 <div class="painting-container">
-  <div *ngFor="let painting of painting$ | async">
-    <div class="painting-item">
-      <button *ngIf="showButtons" class="update-button" (click)="navigateToEdit(painting._id)">Edit</button>
-      <button *ngIf="showButtons" class="delete-button" (click)="deletePainting(painting._id)">Delete</button>
+  
+    <div *ngFor="let painting of painting$ | async" class="painting-item">
+      <span>
+        <button *ngIf="showButtons" class="update-button" (click)="navigateToEdit(painting._id)">Edit</button>
+        <button *ngIf="showButtons" class="delete-button" (click)="deletePainting(painting._id)">Delete</button>
+      </span>
       <h2>{{ painting.name }}</h2>
       
+      <img [src]="painting.image" alt="{{ painting.name }}" class="painting-image">
       <p>{{ painting.description }}</p>
-      <img [src]="painting.image" alt="{{ painting.name }}" width="200">
       <p *ngIf="showPrice">Price: {{ painting.price }}</p>
       <button *ngIf="showAddToCart" (click)="addToCart(painting)">Add to Cart</button>
       <a [routerLink]="['/paintings',painting._id]">View</a>
 
     </div>
-  </div>
+
 </div>

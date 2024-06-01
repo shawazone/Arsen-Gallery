@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -11,7 +12,11 @@ export class AuthService {
   private userSubject = new BehaviorSubject<{ email: string, role: string } | null>(this.getStoredUser()); // Use BehaviorSubject
   public user$ = this.userSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
+) { }
 
   signup(email: string, password: string, role: "user"): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/signup`, { email, password, role })
@@ -34,6 +39,7 @@ export class AuthService {
   logout() {
     // Clear tokens from secure storage
     this.removeTokenAndUser();
+    this.router.navigate(['/']); 
   }
 
   private storeTokenAndUser(token: string, email: string, role: string) {
