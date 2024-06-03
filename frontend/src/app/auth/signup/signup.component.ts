@@ -1,6 +1,5 @@
-// src/app/auth/signup/signup.component.ts
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -20,14 +19,16 @@ export class SignupComponent {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      role: ['user']
+      confirmPassword: ['', [Validators.required]]
+    }, {
+      validators: this.passwordMatchValidator // Corrected here
     });
   }
 
   onSubmit() {
     if (this.signupForm.valid) {
-      const { email, password, role } = this.signupForm.value;
-      this.authService.signup(email, password, role).subscribe(
+      const { email, password } = this.signupForm.value;
+      this.authService.signup(email, password, 'user').subscribe(
         response => {
           this.router.navigate(['/']);
         },
@@ -37,4 +38,21 @@ export class SignupComponent {
       );
     }
   }
+
+  // Custom validator function for password match
+  passwordMatchValidator(control: AbstractControl) {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+  
+    if (!password || !confirmPassword) {
+      return null; // Return null if either control is null
+    }
+  
+    if (password.value !== confirmPassword.value) {
+      return { passwordMismatch: true }; // Return error object if passwords don't match
+    } else {
+      return null; // Return null if passwords match
+    }
+  }
+  
 }

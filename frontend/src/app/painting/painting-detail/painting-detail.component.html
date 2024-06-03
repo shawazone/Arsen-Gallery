@@ -1,9 +1,8 @@
-<div *ngIf="painting">
-    <h1>{{ painting.name }}</h1>
-    <p>{{ painting.description }}</p>
-    <img [src]="painting.image" alt="{{ painting.name }}" width="400">
-    <p>Price: {{ painting.price }}</p>
-    <!-- <p>{{painting.poem}}</p> -->
-    <button (click)="addToCart(painting)">Add to Cart</button>
-  </div>
-  
+<div *ngIf="painting" class="painting-container">
+  <h1 class="painting-name">{{ painting.name }}</h1>
+  <p class="painting-description">{{ painting.description }}</p>
+  <img [src]="painting.image" alt="{{ painting.name }}" class="painting-image">
+  <p class="painting-poem">{{ painting.poem }}</p>
+  <!-- <p class="painting-price">Price: {{ painting.price }}</p> -->
+  <!-- <button (click)="addToCart(painting)" class="add-to-cart-button">Add to Cart</button> -->
+</div>

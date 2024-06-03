@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,8 @@ export class AuthService {
       .pipe(
         tap(response => {
           this.storeTokenAndUser(response.token, response.email, response.role); // Handle token and user data
-        })
+        }),
+        catchError(this.handleError)
       );
   }
 
@@ -32,7 +33,8 @@ export class AuthService {
       .pipe(
         tap(response => {
           this.storeTokenAndUser(response.token, response.email, response.role);
-        })
+        }),
+        catchError(this.handleError)
       );
   }
 
@@ -40,6 +42,18 @@ export class AuthService {
     // Clear tokens from secure storage
     this.removeTokenAndUser();
     this.router.navigate(['/']); 
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message || error.statusText}`;
+    }
+    return throwError(errorMessage);
   }
 
   private storeTokenAndUser(token: string, email: string, role: string) {

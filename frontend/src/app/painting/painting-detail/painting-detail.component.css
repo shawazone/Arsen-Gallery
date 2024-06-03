@@ -1,0 +1,88 @@
+.painting-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(0deg, #ffd700 0%, #1a0505 100%);
+    text-align: center;
+  }
+  
+  .painting-name {
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .painting-description {
+    font-size: 1.25rem;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .painting-image {
+    max-width: 100%;
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .painting-price {
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    color: #e74c3c;
+    margin-bottom: 20px;
+  }
+  
+  .painting-poem {
+    font-size: 1.2rem;
+    font-family: 'Georgia', serif;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  /* Uncomment if you want to use the button */
+  /*
+  .add-to-cart-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #2980b9;
+  }
+  */
+  
+  @media (max-width: 768px) {
+    .painting-container {
+      padding: 15px;
+    }
+  
+    .painting-name {
+      font-size: 2rem;
+    }
+  
+    .painting-description {
+      font-size: 1.1rem;
+    }
+  
+    .painting-price {
+      font-size: 1.3rem;
+    }
+  
+    .painting-poem {
+      font-size: 1rem;
+    }
+  }
+  

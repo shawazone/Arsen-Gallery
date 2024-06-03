@@ -81,7 +81,7 @@ export class AddFormComponent implements OnInit {
           console.log('Painting created successfully:', createdPainting);
           this.paintingForm.reset();
           this.errorMessage = '';
-          this.router.navigate(['/admin/paintings']); // Navigate after success
+          this.router.navigate(['/admin']); // Navigate after success
         },
         error => {
           this.errorMessage = error.message;

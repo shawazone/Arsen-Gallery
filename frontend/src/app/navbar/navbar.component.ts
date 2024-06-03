@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../shared/services/cart.service';
 import { AuthService } from '../shared/services/auth.service';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +12,12 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent implements OnInit {
   logoSrc = 'assets/arsen-portraite.png';
   faShoppingCart = faShoppingCart;
+  faUser = faUser;
   cartItems: string[] = [];
   cartDropdownVisible: boolean = false;
+  navbarOpen: boolean = false;
   user: { email: string, role: string } | null = null;
+  userDropdownVisible: boolean = false;
 
   constructor(private cartService: CartService, private authService: AuthService) { }
 
@@ -26,6 +30,18 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  toggleNavbar(): void {
+    this.navbarOpen = !this.navbarOpen;
+  }
+
+  toggleUserDropdown() {
+    this.userDropdownVisible = !this.userDropdownVisible;
+  }
+
+  closeNavbar(): void {
+    this.navbarOpen = false;
+  }
+
   toggleCartDropdown(): void {
     this.cartDropdownVisible = !this.cartDropdownVisible;
   }
@@ -35,7 +51,7 @@ export class NavbarComponent implements OnInit {
     this.cartDropdownVisible = false;
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }
