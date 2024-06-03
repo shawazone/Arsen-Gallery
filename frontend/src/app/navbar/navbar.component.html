@@ -30,33 +30,43 @@
 
     <div class="icons-content">
       <div class="user-icon">
-        <fa-icon [icon]="faUser" class="user-dropdown-toggle" (click)="toggleUserDropdown()">User</fa-icon >
-        <ul class="user-links" [ngClass]="{'show': userDropdownVisible}">
-          <li *ngIf="user?.email">Welcome, {{ user?.email }}</li>
-          <li *ngIf="!user?.email"><a routerLink="/login" (click)="closeNavbar()">Login</a></li>
-          <li *ngIf="!user?.email"><a routerLink="/signup" (click)="closeNavbar()">Signup</a></li>
-          <li *ngIf="user?.email"><a (click)="logout()">Logout</a></li>
-        </ul>
+        <fa-icon [icon]="faUser" class="user-dropdown-toggle" (click)="toggleUserDropdown()">User</fa-icon>
+        <div class="side-menu-user" [class.visible]="userDropdownVisible">
+          <ul class="user-links">
+            <li *ngIf="user?.email">Welcome, {{ user?.email }}</li>
+            <li *ngIf="!user?.email"><a routerLink="/login" (click)="closeNavbar()">Login</a></li>
+            <li *ngIf="!user?.email"><a routerLink="/signup" (click)="closeNavbar()">Signup</a></li>
+            <li *ngIf="user?.email"><a (click)="logout()">Logout</a></li>
+          </ul>
+        </div>
       </div>
+      
+  
       
       <div class="cart">
         <fa-icon [icon]="faShoppingCart" (click)="toggleCartDropdown()"></fa-icon>
         <span class="cart-count">{{ cartItems.length }}</span>
-        <div class="cart-dropdown" *ngIf="cartDropdownVisible">
-          <p>Shopping Cart ({{ cartItems.length }} items)</p>
-          <ul>
-            <li *ngFor="let item of cartItems">
-              {{ item }}
-            </li>
-          </ul>
-          <button (click)="checkout()">Checkout</button>
-        </div>
       </div>
       
+      <div class="side-menu" [class.visible]="cartDropdownVisible">
+        <p>Shopping Cart ({{ cartItems.length }} items)</p>
+        <ul>
+          <li *ngFor="let item of cartItems">
+            {{ item }}
+          </li>
+        </ul>
+        <button (click)="checkout()">Checkout</button>
+      </div>
+      
+      <div class="backdrop" *ngIf="cartDropdownVisible || userDropdownVisible" (click)="closeAllDropdowns()"></div>
+      
+
+
+
     </div>
-    <button class="navbar-toggler" (click)="toggleNavbar()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <fa-icon class="navbar-toggler"  [icon]="faBars" (click)="toggleNavbar()">
+      <!-- <span class="navbar-toggler-icon">...</span> -->
+    </fa-icon>
 
     <div class="nav-links-container-toggled-menu" [ngClass]="{'show': navbarOpen}">
       <ul class="nav-links">

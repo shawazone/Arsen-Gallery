@@ -3,6 +3,7 @@ import { CartService } from '../shared/services/cart.service';
 import { AuthService } from '../shared/services/auth.service';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +12,27 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarComponent implements OnInit {
   logoSrc = 'assets/arsen-portraite.png';
+
   faShoppingCart = faShoppingCart;
   faUser = faUser;
+  faBars= faBars;
+
   cartItems: string[] = [];
+
   cartDropdownVisible: boolean = false;
   navbarOpen: boolean = false;
-  user: { email: string, role: string } | null = null;
   userDropdownVisible: boolean = false;
 
+  user: { email: string, role: string } | null = null;
+  
   constructor(private cartService: CartService, private authService: AuthService) { }
+  
+
+  toggleCartDropdown() {
+    this.cartDropdownVisible = !this.cartDropdownVisible;
+  }
+
+
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(items => {
@@ -36,15 +49,23 @@ export class NavbarComponent implements OnInit {
 
   toggleUserDropdown() {
     this.userDropdownVisible = !this.userDropdownVisible;
+    if (this.userDropdownVisible) {
+      this.cartDropdownVisible = false; // Close the cart dropdown if open
+    }
+  }
+
+  closeAllDropdowns() {
+    this.cartDropdownVisible = false;
+    this.userDropdownVisible = false;
   }
 
   closeNavbar(): void {
     this.navbarOpen = false;
   }
 
-  toggleCartDropdown(): void {
-    this.cartDropdownVisible = !this.cartDropdownVisible;
-  }
+  // toggleCartDropdown(): void {
+  //   this.cartDropdownVisible = !this.cartDropdownVisible;
+  // }
 
   checkout(): void {
     this.cartService.clearCart();
