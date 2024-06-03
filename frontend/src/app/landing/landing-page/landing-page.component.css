@@ -3,10 +3,33 @@
     height: fit-content; /* Adjust the height as needed */
     object-fit: cover; /* Maintain aspect ratio and fill the container */
   }
-/* 
+  p{
+    background-color: #1a0505;
+    width: fit-content;
+    font-size: 50px  ;
+  }
+  .carousel-caption a {
+    color: white;
+    text-decoration: none; /* Remove underline */
+  }
   
-  @media screen and (max-width: 400px) {
+  .carousel-caption a:hover {
+    color: #ffd700; /* Change color on hover */
+  }
+  
+  @media screen and (max-width: 1200px) {
     .carousel-image {
       height: fit-content;
     }
-  } */
+    p{
+      font-size: 25px;
+    }
+  } 
+  @media screen and (max-width: 500px) {
+    .carousel-image {
+      height: fit-content;
+    }
+    p{
+      font-size: 20px;
+    }
+  } 

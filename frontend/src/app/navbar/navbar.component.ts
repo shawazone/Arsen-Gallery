@@ -57,6 +57,7 @@ export class NavbarComponent implements OnInit {
   closeAllDropdowns() {
     this.cartDropdownVisible = false;
     this.userDropdownVisible = false;
+    this.navbarOpen = false;
   }
 
   closeNavbar(): void {

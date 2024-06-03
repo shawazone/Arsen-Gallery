@@ -12,6 +12,7 @@
           <li><a routerLink="/" routerLinkActive="active" (click)="closeNavbar()">Home</a></li>
           <li><a routerLink="/about-me" routerLinkActive="active" (click)="closeNavbar()">About Me</a></li>
           <li><a routerLink="/shop" routerLinkActive="active" (click)="closeNavbar()">Shop</a></li>
+          <li><a routerLink="/contact-me" routerLinkActive="active" (click)="closeNavbar()">Contact Me</a></li>
           <li *ngIf="user?.role==='admin'"><a routerLink="/admin" routerLinkActive="active" (click)="closeNavbar()">Admin</a></li>
         </ul>
       </div>
@@ -22,12 +23,6 @@
 
 
 
-
-
-
-
- 
-
     <div class="icons-content">
       <div class="user-icon">
         <fa-icon [icon]="faUser" class="user-dropdown-toggle" (click)="toggleUserDropdown()">User</fa-icon>
@@ -36,7 +31,7 @@
             <li *ngIf="user?.email">Welcome, {{ user?.email }}</li>
             <li *ngIf="!user?.email"><a routerLink="/login" (click)="closeNavbar()">Login</a></li>
             <li *ngIf="!user?.email"><a routerLink="/signup" (click)="closeNavbar()">Signup</a></li>
-            <li *ngIf="user?.email"><a (click)="logout()">Logout</a></li>
+            <li *ngIf="user?.email" ><a class="logout" (click)="logout()">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -58,15 +53,14 @@
         <button (click)="checkout()">Checkout</button>
       </div>
       
-      <div class="backdrop" *ngIf="cartDropdownVisible || userDropdownVisible" (click)="closeAllDropdowns()"></div>
+      <div class="backdrop" *ngIf="cartDropdownVisible || userDropdownVisible " (click)="closeAllDropdowns()"></div>
+      <div class="backdrop-nav-links " *ngIf=" navbarOpen " (click)="closeAllDropdowns()"></div>
       
 
 
 
     </div>
-    <fa-icon class="navbar-toggler"  [icon]="faBars" (click)="toggleNavbar()">
-      <!-- <span class="navbar-toggler-icon">...</span> -->
-    </fa-icon>
+    <fa-icon class="navbar-toggler"  [icon]="faBars" (click)="toggleNavbar()"> </fa-icon>
 
     <div class="nav-links-container-toggled-menu" [ngClass]="{'show': navbarOpen}">
       <ul class="nav-links">
@@ -74,13 +68,7 @@
         <li><a routerLink="/about-me" routerLinkActive="active" (click)="closeNavbar()">About Me</a></li>
         <li><a routerLink="/shop" routerLinkActive="active" (click)="closeNavbar()">Shop</a></li>
         <li *ngIf="user?.role==='admin'"><a routerLink="/admin" routerLinkActive="active" (click)="closeNavbar()">Admin</a></li>
-      <!-- </ul>
     
-      <ul class="user-links"> -->
-        <!-- <li *ngIf="user?.email">Welcome, {{ user?.email }}</li>
-        <li *ngIf="!user?.email"><a routerLink="/login" (click)="closeNavbar()">Login</a></li>
-        <li *ngIf="!user?.email"><a routerLink="/signup" (click)="closeNavbar()">Signup</a></li>
-        <li *ngIf="user?.email"><a (click)="logout()">Logout</a></li> -->
       </ul>
     </div>
 

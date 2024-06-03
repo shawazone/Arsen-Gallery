@@ -10,11 +10,23 @@ import { Observable } from 'rxjs';
 export class LandingPageComponent implements OnInit{
 
   images = [
-    { url: '/assets/head1.jpg', alt: 'Image 1', caption: 'Caption 1' },
-    { url: '/assets/head2.jpg', alt: 'Image 2', caption: 'Caption 2' },
-    { url: '/assets/head3.jpg', alt: 'Image 3', caption: 'Caption 3' }
+    { url: '/assets/head1.jpg', alt: 'about-me', caption: ' Welcome to My Gallery! ' },
+    { url: '/assets/head2.jpg', alt: 'about-me', caption: ' Middilism art style ' },
+    { url: '/assets/head3.jpg', alt: 'about-me', caption: ' Free Palstine ' }
   ];
 
+  getRouterLink(alt: string): string {
+    switch (alt) {
+      case 'home':
+        return '/';
+      case 'about-me':
+        return '/about-me';
+      case 'shop':
+        return '/shop';
+      default:
+        return '/';
+    }
+  }
 
   ngOnInit(): void {
 

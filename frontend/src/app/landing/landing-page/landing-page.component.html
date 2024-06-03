@@ -1,11 +1,12 @@
- <carousel>
-    <slide *ngFor="let image of images">
-      <img [src]="image.url" alt="{{ image.alt }}" class="carousel-image">
-      <div class="carousel-caption">
-        <h3>{{ image.caption }}</h3>
-      </div>
-    </slide>
-  </carousel> 
-  <app-painting   ></app-painting>
+<carousel [isAnimated]="true" [interval]="3000">
+  <slide *ngFor="let image of images">
+    <img [src]="image.url" alt="{{ image.alt }}" class="carousel-image">
+    <div class="carousel-caption">
+      <a [routerLink]="getRouterLink(image.alt)">
+        <p>{{ image.caption }}</p>
+      </a>
+    </div>
+  </slide>
+</carousel>
 
-  
+<app-painting></app-painting>

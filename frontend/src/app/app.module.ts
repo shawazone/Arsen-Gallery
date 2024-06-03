@@ -29,6 +29,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 //loader stuff
 import { LoaderComponent } from './loader/loader.component';
 import { LoaderInterceptor } from './loader.interceptor';
+import { ContactMeComponent } from './contact-me/contact-me.component';
 
 
  //carousel library
@@ -41,7 +42,8 @@ import { LoaderInterceptor } from './loader.interceptor';
     FooterComponent, 
     LoginComponent,
     SignupComponent,
-    LoaderComponent,  
+    LoaderComponent,
+    ContactMeComponent,  
    
  
   ],
