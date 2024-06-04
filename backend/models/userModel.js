@@ -5,6 +5,12 @@ const validator = require('validator');
 const schema = mongoose.Schema;
 
 const userSchema = new schema({
+    username:{
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 30,
+    },
     email: {
         type: String,
         required: true,
@@ -25,10 +31,10 @@ const userSchema = new schema({
 });
 
 // Static signup method
-userSchema.statics.signup = async function(email, password, role) {
+userSchema.statics.signup = async function(username,email, password, role) {
 
     // Validation
-    if (!email || !password) {
+    if (!username || !email || !password) {
         throw Error('All fields must be filled');
     }
     if (!validator.isEmail(email)) {
@@ -48,7 +54,7 @@ userSchema.statics.signup = async function(email, password, role) {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
-    const user = await this.create({ email, password: hash, role });
+    const user = await this.create({username, email, password: hash, role });
 
     return user;
 };

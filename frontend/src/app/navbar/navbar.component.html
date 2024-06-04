@@ -3,7 +3,7 @@
   <div class="container">
     <a class="logo" routerLink="/">
       <img [src]="logoSrc" class="arsen-portraite" alt="Art Gallery Logo">
-      Arsen's Gallery
+      <span class="site-name">Arsen's Gallery</span>
     </a>
    
     <div class="nav-links-container">
@@ -21,27 +21,36 @@
       </div>
     </div>
 
+    <div class="cart">
+      <fa-icon [icon]="faShoppingCart" (click)="toggleCartDropdown()"></fa-icon>
+      <span class="cart-count">{{ cartItems.length }}</span>
+    </div>
+
 
 
     <div class="icons-content">
       <div class="user-icon">
-        <fa-icon [icon]="faUser" class="user-dropdown-toggle" (click)="toggleUserDropdown()">User</fa-icon>
+      
+          <span *ngIf="!user" (click)="toggleUserDropdown()" class="user-name"> Account</span>
+          <fa-icon [icon]="faUser"  *ngIf="user" class="user-dropdown-toggle" (click)="toggleUserDropdown()">User</fa-icon>
+          <span *ngIf="user?.username" class="user-name" (click)="toggleUserDropdown()">{{ user?.username }}</span>
+    
         <div class="side-menu-user" [class.visible]="userDropdownVisible">
           <ul class="user-links">
-            <li *ngIf="user?.email">Welcome, {{ user?.email }}</li>
+            <li *ngIf="user?.email">username: {{ user?.username }}</li>
+            <li *ngIf="user?.email">email: {{ user?.email }}</li>
             <li *ngIf="!user?.email"><a routerLink="/login" (click)="closeNavbar()">Login</a></li>
             <li *ngIf="!user?.email"><a routerLink="/signup" (click)="closeNavbar()">Signup</a></li>
             <li *ngIf="user?.email" ><a class="logout" (click)="logout()">Logout</a></li>
+            <li *ngIf="user?.email" ><a class="Edit User"  [routerLink]="['/edit-user',user?.id]">Edit user info</a></li>
           </ul>
         </div>
       </div>
       
   
       
-      <div class="cart">
-        <fa-icon [icon]="faShoppingCart" (click)="toggleCartDropdown()"></fa-icon>
-        <span class="cart-count">{{ cartItems.length }}</span>
-      </div>
+   
+
       
       <div class="side-menu" [class.visible]="cartDropdownVisible">
         <p>Shopping Cart ({{ cartItems.length }} items)</p>

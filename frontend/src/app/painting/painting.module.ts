@@ -5,7 +5,7 @@ import { PaintingDetailComponent } from './painting-detail/painting-detail.compo
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { PaintingRoutingModule } from './painting-routes.module';
-
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,6 +19,7 @@ import { PaintingRoutingModule } from './painting-routes.module';
     CommonModule,
     RouterModule,
     PaintingRoutingModule,
+    FormsModule,
    
 
   ],

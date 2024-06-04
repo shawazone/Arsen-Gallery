@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   navbarOpen: boolean = false;
   userDropdownVisible: boolean = false;
 
-  user: { email: string, role: string } | null = null;
+  user: { username:string ,email: string, role: string ,  id: string } | null = null;
   
   constructor(private cartService: CartService, private authService: AuthService) { }
   

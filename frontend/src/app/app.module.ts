@@ -30,6 +30,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoaderComponent } from './loader/loader.component';
 import { LoaderInterceptor } from './loader.interceptor';
 import { ContactMeComponent } from './contact-me/contact-me.component';
+import { EditUserComponent } from './auth/edit-user/edit-user.component';
 
 
  //carousel library
@@ -43,7 +44,8 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
     LoginComponent,
     SignupComponent,
     LoaderComponent,
-    ContactMeComponent,  
+    ContactMeComponent,
+    EditUserComponent,  
    
  
   ],

@@ -18,6 +18,7 @@ export class SignupComponent {
   ) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required , Validators.minLength(3)]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     }, {
@@ -27,8 +28,8 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.signupForm.valid) {
-      const { email, password } = this.signupForm.value;
-      this.authService.signup(email, password, 'user').subscribe(
+      const {username, email, password } = this.signupForm.value;
+      this.authService.signup(username,email, password, 'user').subscribe(
         response => {
           this.router.navigate(['/']);
         },

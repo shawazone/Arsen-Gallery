@@ -18,8 +18,9 @@ const userController = {
 
     // create a token
     const token = createToken(user._id)
-
-    res.status(200).json({email, token,role:user.role})
+    const username = user.username
+    const id = user._id
+    res.status(200).json({username,email,token,role:user.role,id})
   } catch (error) {
     res.status(400).json({error: error.message})
    
@@ -31,15 +32,15 @@ const userController = {
 
 //signup user
  signup : async (req, res) => {
-  const {email, password,role} = req.body;
+  const {username,email, password,role} = req.body;
 
   try{
-      const user = await User.signup(email, password,role);
+      const user = await User.signup(username,email,password,role);
 
       // create token 
       const token = createToken(user._id);
- 
-      res.status(200).json({email, token,role:user.role})
+      const id = user._id
+      res.status(200).json({username,email,token,role:user.role,id})
     } catch (error) {
       res.status(400).json({error: error.message})
       // console.log(error.message)
@@ -60,10 +61,10 @@ getAllUsers : async (req, res) => {
 
 updateUser :async (req, res) => {
   const { id } = req.params;
-  const { email,password, role } = req.body;
+  const {username, email,password, role } = req.body;
 
   try {
-      const user = await User.findByIdAndUpdate(id, { email,password, role }, { new: true, runValidators: true });
+      const user = await User.findByIdAndUpdate(id, {username, email,password, role }, { new: true, runValidators: true });
       if (!user) {
           return res.status(404).json({ error: 'User not found' });
       }

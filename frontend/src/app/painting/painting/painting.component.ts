@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { PaintingService } from '../../shared/services/painting.service';
 import { CartService } from '../../shared/services/cart.service';
-    
+ 
+import { map, startWith } from 'rxjs/operators';
 
 interface Painting {
   name: string;
@@ -19,6 +20,9 @@ interface Painting {
   templateUrl: './painting.component.html',
   styleUrl: './painting.component.css'
 })
+
+
+
 export class PaintingComponent  implements OnInit{
   @Input() showButtons: boolean = false;
   @Input() showPrice: boolean = false;
@@ -28,6 +32,8 @@ export class PaintingComponent  implements OnInit{
 
 
 
+  searchQuery = '';
+  filteredPaintings: Observable<Painting[]> | undefined;
   painting$: Observable<any[]>|undefined;
 
   constructor(private paintingService: PaintingService, private router: Router,private cartService: CartService) { }

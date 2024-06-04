@@ -16,14 +16,17 @@ export class CartService {
   addToCart(paintingName: string): void {
     const currentCart = this.cartItems.value;
     
+    
     // Check if the painting is already in the cart
     if (!currentCart.includes(paintingName)) {
         const updatedCart = [...currentCart, paintingName];
         this.cartItems.next(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(currentCart));
     }
   }
   clearCart(): void {
     this.cartItems.next([]);
+    localStorage.removeItem('cart');
   }
 
 }

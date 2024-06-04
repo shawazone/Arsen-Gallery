@@ -1,0 +1,20 @@
+.admin-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+.add-form-button{
+    padding: 10px;
+    background-color: #1a0505;  
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+  .add-form-button:hover {
+    background-color: #ffd700;
+  }

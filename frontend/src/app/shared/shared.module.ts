@@ -2,7 +2,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PopupComponent } from './popup/popup.component';
+
 
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -11,9 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    PopupComponent
-  ],
+  declarations: [ ],
   imports: [
     CommonModule,
 
@@ -26,6 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
   ],
   // providers: [PaintingService],
-  exports: [PopupComponent]
+  exports: []
 })
 export class SharedModule { }

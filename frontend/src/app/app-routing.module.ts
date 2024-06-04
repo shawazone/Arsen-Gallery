@@ -11,6 +11,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { ShopGuard } from './guards/shop.guard';
 import { ContactMeComponent } from './contact-me/contact-me.component';
+import { EditUserComponent } from './auth/edit-user/edit-user.component';
 
 const routes: Routes = [
   {path:'' , loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule)},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path :'contact-me', component: ContactMeComponent},
   { path: 'login', component:LoginComponent,canActivate: [AuthGuard] },
   { path: 'signup', component:SignupComponent,canActivate: [AuthGuard] },
+  {path:'edit-user/:id', component:EditUserComponent},
   { path: 'paintings', component: PaintingComponent },
   { path: 'admin', loadChildren: () => import('./admins/admins.module').then(m => m.AdminsModule),canActivate: [AdminGuard] },
   { path: '', redirectTo: '/', pathMatch: 'full' },
