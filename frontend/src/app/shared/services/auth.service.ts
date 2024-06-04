@@ -42,8 +42,10 @@ export class AuthService {
       );
   }
 
-  updateUser(username:string ,email: string, password: string): Observable<any> {
-    return this.http.patch<any>(`${this.baseUrl}/update`, {username, email, password })
+  updateUser(id:string,username:string ,email: string, password: string): Observable<any> {
+    console.log("the id",id); // Remove the comma here
+    return this.http.patch<any>(`${this.baseUrl}/${id}`, {username, email, password })
+   
       .pipe(
         tap(response => {
           this.storeTokenAndUser(response.username,response.token, response.email, response.role,response.id);

@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 
 const createToken = (_id) => {
@@ -62,13 +63,18 @@ getAllUsers : async (req, res) => {
 updateUser :async (req, res) => {
   const { id } = req.params;
   const {username, email,password, role } = req.body;
+  const token = createToken(id);
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(password, salt);
+
+
 
   try {
-      const user = await User.findByIdAndUpdate(id, {username, email,password, role }, { new: true, runValidators: true });
+      const user = await User.findByIdAndUpdate(id, {username, email,password:hash, role }, { new: true, runValidators: true });
       if (!user) {
           return res.status(404).json({ error: 'User not found' });
       }
-      res.status(200).json(user);
+      res.status(200).json({username,email,token,role:user.role,id});
   } catch (error) {
       res.status(400).json({ error: error.message });
   }

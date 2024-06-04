@@ -41,8 +41,8 @@
             <li *ngIf="user?.email">email: {{ user?.email }}</li>
             <li *ngIf="!user?.email"><a routerLink="/login" (click)="closeNavbar()">Login</a></li>
             <li *ngIf="!user?.email"><a routerLink="/signup" (click)="closeNavbar()">Signup</a></li>
-            <li *ngIf="user?.email" ><a class="logout" (click)="logout()">Logout</a></li>
             <li *ngIf="user?.email" ><a class="Edit User"  [routerLink]="['/edit-user',user?.id]">Edit user info</a></li>
+            <li *ngIf="user?.email" ><a class="logout" (click)="logout()" style="color: red; background-color: white; padding: 5px; cursor: pointer;">Logout</a></li>
           </ul>
         </div>
       </div>

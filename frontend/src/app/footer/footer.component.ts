@@ -9,7 +9,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
+  currentYear: number;
+
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, fab);
+    this.currentYear = new Date().getFullYear();
   }
+
 }
