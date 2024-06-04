@@ -23,11 +23,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: rgba(226, 18, 18, 0.5); /* Set the background color */
     border-radius: 50%; /* Make the indicators circular */
     margin: 0 5px; /* Add some space between indicators */
+    display: none;
   }
   
   /* Active state for carousel indicator */
   .carousel-indicators .active {
     background-color: #0e0d0d; /* Change the background color of the active indicator */
+    display: none;
   }
 
   /* Custom styles for carousel navigation arrows */
@@ -39,6 +41,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 24px; /* Set the font size */
     color: #fff; /* Set the color of the arrows */
     top: 200px;
+    display: none;
   }
   
   /* Hover effect for carousel navigation arrows */
