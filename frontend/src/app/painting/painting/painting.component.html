@@ -7,11 +7,14 @@
       </span>
       <h2>{{ painting.name }}</h2>
       
+      <a [routerLink]="['/paintings',painting._id]">
       <img [src]="painting.image" alt="{{ painting.name }}" class="painting-image">
+    </a>
+    
       <p>{{ painting.description }}</p>
       <p *ngIf="showPrice">Price: {{ painting.price }}</p>
-      <button *ngIf="showAddToCart" (click)="addToCart(painting)">Add to Cart</button>
-      <a [routerLink]="['/paintings',painting._id]">View</a>
+      <button  class="add-to-cart-button" *ngIf="showAddToCart" (click)="addToCart(painting)">Add to Cart</button>
+     
 
     </div>
 
