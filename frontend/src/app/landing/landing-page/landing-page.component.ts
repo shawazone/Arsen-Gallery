@@ -12,7 +12,7 @@ export class LandingPageComponent implements OnInit{
   images = [
     { url: '/assets/head1.jpg', alt: 'about-me', caption: ' Welcome to My Gallery! ' },
     { url: '/assets/head2.jpg', alt: 'about-me', caption: ' Middilism art style ' },
-    { url: '/assets/head3.jpg', alt: 'about-me', caption: ' Free Palstine ' }
+    { url: '/assets/head3.jpg', alt: 'about-me', caption: ' Free palestine ' }
   ];
 
   getRouterLink(alt: string): string {

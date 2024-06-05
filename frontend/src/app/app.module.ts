@@ -13,14 +13,14 @@ import { AboutMeComponent } from './components/about-me/about-me.component';//co
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { PaintingService } from '../app/shared/services/painting.service'; //services
+
 import { HttpClientModule ,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { SharedModule } from './shared/shared.module';
+
 import { PaintingModule } from './painting/painting.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { PaintingComponent } from './painting/painting/painting.component';
+
 import { ShopModule } from './shop/shop.module';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './auth/login/login.component';

@@ -1,5 +1,5 @@
 <div class="painting-container">
-  
+<!-- 👀 Structural Directives: -->  
     <div *ngFor="let painting of painting$ | async" class="painting-item">
       <span>
         <button *ngIf="showButtons" class="update-button" (click)="navigateToEdit(painting._id)">Edit</button>

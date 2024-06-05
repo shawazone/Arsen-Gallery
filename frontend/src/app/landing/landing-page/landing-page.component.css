@@ -4,13 +4,15 @@
     object-fit: cover; /* Maintain aspect ratio and fill the container */
   }
   p{
-    background-color: #1a0505;
+    /* background-color: #1a0505; */
     width: fit-content;
     font-size: 50px  ;
+    text-shadow: 2px 2px 2px black;
   }
   .carousel-caption a {
     color: white;
     text-decoration: none; /* Remove underline */
+  
   }
   
   .carousel-caption a:hover {
@@ -31,64 +33,91 @@
     }
     p{
       font-size: 15px;
+      
     }
   } 
 
   .about-me {
     max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px auto;
+    overflow: hidden;
   }
   
-  section {
+  .art-style {
     display: flex;
-    margin: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; /* Ensure both columns have the same height */
     margin-bottom: 40px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .about-image {
     flex: 1;
+    margin: 10px;
   }
   
   .about-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    border-radius: 10px;
   }
   
   .content {
-    flex: 2;
+    flex: 1;
     padding: 20px;
     background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%; /* Set a fixed height to match the image height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
-  .h2-about {
-    font-size: 24px;
-    margin-bottom: 10px;
+  .poem {
+    flex: 1;
   }
   
-  .p-about {
+  .poem h6 {
     font-size: 18px;
+    margin: 10px 0;
+    line-height: 1.6;
   }
   
-  @media screen and (max-width: 600px) {
-    section {
+  .section3 {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .section3 h1 {
+    font-size: 24px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .art-style {
       flex-direction: column;
     }
   
-    .about-image {
-      flex: 1 0 auto;
-    }
-  
+    .about-image,
     .content {
       flex: 1;
-      padding: 20px;
+      height: auto; /* Reset height for smaller screens */
+    }
+  
+    .poem h6 {
+      font-size: 16px; /* Decrease font size for smaller screens */
+      line-height: 1.4; /* Decrease line height for smaller screens */
     }
   }
   
-
+  @media screen and (max-width: 480px) {
+    .poem h6 {
+      font-size: 14px; /* Further decrease font size for even smaller screens */
+      line-height: 1.2; /* Further decrease line height for even smaller screens */
+    }
+  }
+  
+  
   .section3{
     display: flex;
     align-items: center;

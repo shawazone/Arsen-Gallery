@@ -13,7 +13,7 @@ export class SignupComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthService,//  👀 Dependency Injection (DI): 
     private router: Router
   ) {
     this.signupForm = this.fb.group({
