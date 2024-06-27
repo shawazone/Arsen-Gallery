@@ -14,7 +14,7 @@ const PORT = process.env.PORT ;
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, { // needs to be in a seprate file and imported
     // useNewUrlParser: true,
     // useUnifiedTopology: true
   })

@@ -9,10 +9,10 @@
     <div class="nav-links-container">
       <div class="nav-links-wrapper">
         <ul class="nav-links">
-          <li><a routerLink="/" routerLinkActive="active" (click)="closeNavbar()">Home</a></li>
-          <li><a routerLink="/about-me" routerLinkActive="active" (click)="closeNavbar()">About Me</a></li>
-          <li><a routerLink="/shop" routerLinkActive="active" (click)="closeNavbar()">Shop</a></li>
-          <li><a routerLink="/contact-me" routerLinkActive="active" (click)="closeNavbar()">Contact Me</a></li>
+          <li ><a routerLink="/" routerLinkActive="active" (click)="closeNavbar()">Home</a></li>
+          <li *ngIf="!user || user.role !== 'admin'"><a routerLink="/about-me" routerLinkActive="active" (click)="closeNavbar()">About Me</a></li>
+          <li *ngIf="!user || user.role !== 'admin'"><a routerLink="/shop" routerLinkActive="active" (click)="closeNavbar()">Shop</a></li>
+          <li *ngIf="!user || user.role !== 'admin'"><a routerLink="/contact-me" routerLinkActive="active" (click)="closeNavbar()">Contact Me</a></li>
           <li *ngIf="user?.role==='admin'"><a routerLink="/admin" routerLinkActive="active" (click)="closeNavbar()">Admin</a></li>
         </ul>
       </div>

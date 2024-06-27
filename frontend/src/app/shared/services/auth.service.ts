@@ -35,8 +35,9 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/login`, { email, password })
       .pipe(
         tap(response => {
-          console.log("the uwu response",response);
+       
           this.storeTokenAndUser(response.username,response.token, response.email, response.role,response.id);
+          // fix role (it should be response.role instead of 'user')
         }),
         catchError(this.handleError)
       );
